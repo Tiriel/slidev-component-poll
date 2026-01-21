@@ -5,6 +5,8 @@ export type Answers = string[] | RendererNode[] // VNodeArrayChildren;
 export interface AnswersContext {
   answers: Ref<Answers>;
   setAnswers: (answers: Answers) => void;
+  shuffleOrder: Ref<number[]>;
+  setShuffleOrder: (order: number[]) => void;
 }
 
 export const idContext: InjectionKey<Ref<string>> = Symbol("slidev-poll-id");

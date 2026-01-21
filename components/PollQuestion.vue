@@ -3,7 +3,7 @@ import { computed, inject, isVNode, ref } from "vue";
 import { configs } from "../services/slidev-compat";
 
 import { useAnswers } from "../composables/useAnswers";
-import { idContext } from "../constants";
+import { answersContext, idContext } from "../constants";
 import { answerPoll, deviceId, getDefaultValue, pollState, userId } from "../services";
 import type { Result } from "../types";
 import { PollStatus } from "../types";
@@ -20,8 +20,19 @@ const props = withDefaults(
   { editable: false, multiple: false }
 );
 const id = inject(idContext, ref(""));
+const context = inject(answersContext);
 
 const renderAnswers = useAnswers(props.answers);
+
+// Get answers in shuffled display order with their original indices
+const shuffledAnswers = computed(() => {
+  const order = context?.shuffleOrder.value ?? [];
+  return order.map((originalIndex) => ({
+    answer: renderAnswers.value[originalIndex],
+    originalIndex,
+  }));
+});
+
 const hasResult = computed(
   () => pollState[id.value]?.results[deviceId.value] !== undefined
 );
@@ -47,13 +58,14 @@ function handleSubmit() {
       >
         <ul class="poll-question__list mb-2">
           <li
-            v-for="(answer, index) in renderAnswers"
+            v-for="{ answer, originalIndex } in shuffledAnswers"
+            :key="originalIndex"
             class="poll-question__item list-none flex items-center !m-0 !p-1 !leading-6 border-1 border-transparent"
           >
             <label class="poll-question__item-label flex w-full">
               <input
                 :type="multiple ? 'checkbox' : 'radio'"
-                :value="index"
+                :value="originalIndex"
                 :name="`question-${id}`"
                 v-model="chosenAnswer"
                 class="poll-question__item-input mr-1"

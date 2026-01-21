@@ -4,6 +4,7 @@ declare module "@slidev/types" {
   export interface SlidevConfig {
     pollSettings?: {
       anonymous?: boolean;
+      randomize?: boolean;
     };
   }
 }

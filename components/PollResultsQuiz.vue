@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { inject, isVNode, ref } from "vue";
+import { computed, inject, isVNode, ref } from "vue";
 
 import { useAnswers } from "../composables/useAnswers";
-import { idContext } from "../constants";
+import { answersContext, idContext } from "../constants";
 
 import PollResultQuiz from "./PollResultQuiz.vue";
 
@@ -14,16 +14,28 @@ const props = defineProps<{
   public?: boolean;
 }>();
 const id = inject(idContext, ref(""));
+const context = inject(answersContext);
 
 const renderAnswers = useAnswers(props.answers);
+
+// Get answers in shuffled display order with their original indices
+const shuffledAnswers = computed(() => {
+  const order = context?.shuffleOrder.value ?? [];
+  return order.map((originalIndex) => ({
+    answer: renderAnswers.value[originalIndex],
+    originalIndex,
+  }));
+});
 </script>
 
 <template>
   <ul class="poll-results-quiz mb-2">
     <PollResultQuiz
-      v-for="(answer, index) in renderAnswers"
+      v-for="{ answer, originalIndex } in shuffledAnswers"
+      :key="originalIndex"
+      :controlled="controlled"
       :correctAnswer="correctAnswer"
-      :index="index"
+      :index="originalIndex"
       :multiple="multiple"
       :public="public"
     >

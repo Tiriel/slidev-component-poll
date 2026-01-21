@@ -1,5 +1,7 @@
 ---
 theme: default
+pollSettings:
+  randomize: true
 ---
 
 # Example slides

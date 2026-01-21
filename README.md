@@ -120,6 +120,22 @@ pollSettings:
 ---
 ```
 
+### Randomize Answer Order
+
+If you want to randomize the order of answers in all polls (useful for quizzes to prevent answer position bias), add in the Front Matter:
+
+```yaml
+---
+pollSettings:
+  randomize: true
+---
+```
+
+The randomization is deterministic based on the poll ID, meaning:
+- The same poll will always show answers in the same shuffled order
+- Different polls will have different random orders
+- The correct answer indices remain unchanged (e.g., `correctAnswer="0"` still refers to the first answer in your definition, even if displayed in a different position)
+
 ## Components
 
 You can create a poll by using the [`Poll` component](#poll).
