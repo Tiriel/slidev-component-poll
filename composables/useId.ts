@@ -1,5 +1,5 @@
 import { onMounted, onBeforeUnmount, ref, computed } from "vue";
-import { useSlideContext } from "@slidev/client";
+import { useSlideContext } from "../services/slidev-compat";
 
 import { SlideContext } from "../types";
 

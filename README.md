@@ -10,11 +10,25 @@ Poll and quiz component for `Slidev`.
 
 See below for more examples.
 
+## Requirements
+
+- **Slidev** >= 52.0.0
+- **Node.js** >= 20.0.0
+- **Vue** >= 3.4.0
+
 ## Installation
 
 ```bash
 npm i slidev-component-poll
 ```
+
+### Migrating from v3.x
+
+If you're upgrading from version 3.x (which targeted Slidev 0.50.x), note the following:
+
+1. **Node.js upgrade required**: Slidev 52+ requires Node.js 20 or later
+2. **Slidev upgrade required**: Update your Slidev dependencies to version 52+
+3. **No API changes**: The component API remains the same
 
 ## Slidev Configuration
 

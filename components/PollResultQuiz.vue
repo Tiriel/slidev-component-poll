@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { configs } from "@slidev/client";
 import { computed, inject, ref } from "vue";
+import { configs } from "../services/slidev-compat";
 
 import { idContext } from "../constants";
 import {

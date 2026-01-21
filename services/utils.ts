@@ -1,5 +1,5 @@
 import { computed } from "vue";
-import { configs, useNav } from "@slidev/client";
+import { configs, useNav } from "./slidev-compat";
 
 const nav = useNav();
 const { isPresenter, currentRoute } = nav
