@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { configs } from "@slidev/client";
 import { computed, inject, isVNode, ref } from "vue";
+import { configs } from "../services/slidev-compat";
 
 import { useAnswers } from "../composables/useAnswers";
 import { idContext } from "../constants";

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { inject, ref } from "vue";
-import { useNav } from "@slidev/client";
+import { useNav } from "../services/slidev-compat";
 
 import { idContext } from "../constants";
 import { hasControlAccess, pollState, resetPoll, setPollStatus } from "../services";
