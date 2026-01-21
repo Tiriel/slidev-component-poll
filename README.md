@@ -1,6 +1,6 @@
 # slidev-component-poll
 
-[![NPM version](https://img.shields.io/npm/v/slidev-component-poll?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-component-poll)
+[![NPM Version](https://img.shields.io/npm/v/%40tiriel%2Fslidev-component-poll)](https://www.npmjs.com/package/@tiriel/slidev-component-poll)
 
 Poll and quiz component for `Slidev`.
 
